@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 5.0.101
     - name: Dotnet Publish
-      run: dotnet publish src -c Release -o deploy
+      run: dotnet publish PruebaCiCd.sln -c Release -o deploy
     - name: Copy via ssh
       uses: garygrossgarten/github-action-scp@v0.5.3
       with:
-        local: /home/runner/work/PruebaCiCd/PruebaCiCd/src/deploy/
+        local: /home/runner/work/PruebaCiCd/PruebaCiCd/deploy
         remote: /var/www/prueba
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
